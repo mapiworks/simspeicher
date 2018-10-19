@@ -1,2 +1,9 @@
-# simspeicher
-Energyhack 2018 - SimSpeicher
+# SimSpeicher
+Energyhack 2018
+
+Malte Viefhues & Mario Pilz
+
+HowTo - Install:
+1. Grab content of SimSpeicher.flow 
+2. Import into Node Red instance
+3. Deploy
