@@ -1,0 +1,623 @@
+[
+    {
+        "id": "e5886f9f.a5ae8",
+        "type": "tab",
+        "label": "BWB",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4937b43c.08a9ac",
+        "type": "file in",
+        "z": "e5886f9f.a5ae8",
+        "name": "BWB",
+        "filename": "Daten_Mod.csv",
+        "format": "lines",
+        "chunk": false,
+        "sendError": false,
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "3eda3b69.02bb04"
+            ]
+        ]
+    },
+    {
+        "id": "a6bb6fb2.885af",
+        "type": "file in",
+        "z": "e5886f9f.a5ae8",
+        "name": "Preise",
+        "filename": "DE_Großhandelspreise_201701010000_201712312359_1.csv",
+        "format": "lines",
+        "chunk": false,
+        "sendError": false,
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "b7c9b02d.beaa3"
+            ]
+        ]
+    },
+    {
+        "id": "7590e271.da11cc",
+        "type": "ui_button",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "group": "c0aba179.67b6",
+        "order": 12,
+        "width": "13",
+        "height": "1",
+        "passthru": false,
+        "label": "Start",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 90,
+        "y": 160,
+        "wires": [
+            [
+                "62085c4d.0d2ed4"
+            ]
+        ]
+    },
+    {
+        "id": "3eda3b69.02bb04",
+        "type": "csv",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "sep": ";",
+        "hdrin": true,
+        "hdrout": "",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "Zeit,Abwasser Zulauf,Abwasser Ablauf,Faulgas Erzeugung,Strom Bedarf,Strom Bezug,Strom Erzeugung,Stromverbraucher Gebläse 1.1,Stromverbraucher Gebläse 1.2,Stromverbraucher Gebläse 2.1,Stromverbraucher Gebläse 2.2,Stromverbraucher Gebläse 3.1,Stromverbraucher Gebläse 3.2,Stromverbraucher Gebläse 4.1,Stromverbraucher Gebläse 4.2,Stromverbraucher Gebläse 5.1,Stromverbraucher Gebläse 5.2,Stromverbraucher Gebläse 6.1,Stromverbraucher Gebläse 6.2,Stromverbraucher Gebläse 7.1,Stromverbraucher Gebläse 7.2,Stromverbraucher Gebläse 7.3,Stromerzeuger BHKW 1,Stromerzeuger Mikrogasturbine1,Stromerzeuger Mikrogasturbine2,Stromerzeuger Windenergie,Wärme Bedarf,Wärme Erzeugung,Speicher Gasspeicher 1,Speicher Gasspeicher 2,Stromerzeuger  BHKW 2,Stromerzeuger  BHKW 3,Stromerzeuger  PV Modul",
+        "skip": "0",
+        "x": 510,
+        "y": 120,
+        "wires": [
+            [
+                "f10e9f3c.475ac"
+            ]
+        ]
+    },
+    {
+        "id": "b7c9b02d.beaa3",
+        "type": "csv",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "sep": ";",
+        "hdrin": true,
+        "hdrout": "",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "Datum,Uhrzeit,Deutschland/Luxemburg[Euro/MWh],Dänemark 1[Euro/MWh],Dänemark 2[Euro/MWh],Frankreich[Euro/MWh],Italien (Nord)[Euro/MWh],Niederlande[Euro/MWh],Polen[Euro/MWh],Schweden 4[Euro/MWh],Schweiz[Euro/MWh],Slowenien[Euro/MWh],Tschechien[Euro/MWh],Ungarn[Euro/MWh],Österreich[Euro/MWh],Deutschland/Österreich/Luxemburg[Euro/MWh]",
+        "skip": "0",
+        "x": 510,
+        "y": 200,
+        "wires": [
+            [
+                "21e4547d.cc0ddc"
+            ]
+        ]
+    },
+    {
+        "id": "f10e9f3c.475ac",
+        "type": "delay",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "0.1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 670,
+        "y": 120,
+        "wires": [
+            [
+                "506d1046.a65d4"
+            ]
+        ]
+    },
+    {
+        "id": "21e4547d.cc0ddc",
+        "type": "delay",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "0.4",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [
+                "56f2ceae.11619"
+            ]
+        ]
+    },
+    {
+        "id": "506d1046.a65d4",
+        "type": "function",
+        "z": "e5886f9f.a5ae8",
+        "name": "Strom_Bedarf_Netto + Prediction",
+        "func": "var Strom_Preis = flow.get(\"Strom_Preis\")\nvar Strom_Preis_Speicher = flow.get(\"Strom_Preis_Speicher\")\nvar Strom_Preis_Speicher_History = flow.get(\"Strom_Preis_Speicher_History\")\nvar Speicher_Fuellstand = flow.get(\"Speicher_Fuellstand\")\nvar Speicher_Fuellstand_Autopilot = flow.get(\"Speicher_Fuellstand_Autopilot\")\nvar Netto_Bedarf = parseFloat(msg.payload[\"Strom Bedarf\"]) - parseFloat(msg.payload[\"Strom Erzeugung\"])\nvar Konto = flow.get(\"Konto\")\nvar Konto_Autopilot = flow.get(\"Konto_Autopilot\")\nvar Konto_Benchmark = flow.get(\"Konto_Benchmark\")\nvar Netto_Bedarf_History = flow.get(\"Netto_Bedarf_History\")\n\nvar Speicher_Max = flow.get(\"Speicher_Max\")\nvar Speicher_Benutzen = flow.get(\"Speicher_Benutzen\")\n\nvar Ts = flow.get(\"Ts\")\nvar K = flow.get(\"K\")\nvar C = flow.get(\"C\")\n\n\nvar Netto_Bedarf_Zeit = Date.parse(msg.payload[\"Zeit\"].split(\"/\")[1] + \"/\" + msg.payload[\"Zeit\"].split(\"/\")[0] + \"/\" + msg.payload[\"Zeit\"].split(\"/\")[2])\n\nNetto_Bedarf_History.push({\"x\": Netto_Bedarf_Zeit, \"y\": Math.round(Netto_Bedarf*10)/10 })\nif (Netto_Bedarf_History.length > 24 * 10) Netto_Bedarf_History.shift()\n\nflow.set(\"Netto_Bedarf_History\", Netto_Bedarf_History)\n\nvar Strom_Preis_Speicher_Abl = Strom_Preis_Speicher_History[Strom_Preis_Speicher_History.length-1] - Strom_Preis_Speicher_History[Strom_Preis_Speicher_History.length-2]\n\n/*\nnode.warn(\"Konto_Autopilot= \" +  Konto_Autopilot)\nnode.warn(\"Netto_Bedarf= \" +  Netto_Bedarf)\nnode.warn(\"Strom_Preis= \" +  Strom_Preis)\nnode.warn(\"Strom_Preis_Speicher= \" +  Strom_Preis_Speicher)\nnode.warn(\"Speicher_Fuellstand_Autopilot= \" +  Speicher_Fuellstand_Autopilot)\nnode.warn(\"-----\")\n*/\n\nKonto_Benchmark -= Netto_Bedarf * Strom_Preis\n\nif (Netto_Bedarf > 0) {\n    \n    // Autopilot\n    if (Speicher_Fuellstand_Autopilot > 0) {\n        \n        /*\n        if (Strom_Preis_Speicher < Strom_Preis) {\n            \n            var Strom_Aus_Speicher = Math.min(Math.min(Speicher_Fuellstand_Autopilot, C), Netto_Bedarf)\n            Speicher_Fuellstand_Autopilot -= Strom_Aus_Speicher\n            \n            //node.warn(\"Strom_Aus_Speicher= \" +  Strom_Aus_Speicher)\n            \n            Konto_Autopilot -= (Netto_Bedarf - Strom_Aus_Speicher) * Strom_Preis\n            \n        } else {\n            \n            Konto_Autopilot -= (Netto_Bedarf) * Strom_Preis\n            \n        }\n        */\n        \n        /*\n        var Strom_Aus_Speicher = Math.min(Math.min(Speicher_Fuellstand_Autopilot, C), Netto_Bedarf)\n        Speicher_Fuellstand_Autopilot -= Strom_Aus_Speicher\n            \n        Konto_Autopilot -= (Netto_Bedarf - Strom_Aus_Speicher) * Strom_Preis\n        */\n        \n        /*\n        if (Strom_Preis > 35/1000 || Speicher_Benutzen) {\n            \n            var Strom_Aus_Speicher = Math.min(Math.min(Speicher_Fuellstand_Autopilot, C), Netto_Bedarf)\n            Speicher_Fuellstand_Autopilot -= Strom_Aus_Speicher\n            \n            //node.warn(\"Strom_Aus_Speicher= \" +  Strom_Aus_Speicher)\n            \n            Konto_Autopilot -= (Netto_Bedarf - Strom_Aus_Speicher) * Strom_Preis\n            \n        } else {\n            \n            Konto_Autopilot -= (Netto_Bedarf) * Strom_Preis\n            \n        }\n        */\n        \n        \n        if (Strom_Preis_Speicher_Abl < 0) {\n            \n            var Strom_Aus_Speicher = Math.min(Math.min(Speicher_Fuellstand_Autopilot, C), Netto_Bedarf)\n            Speicher_Fuellstand_Autopilot -= Strom_Aus_Speicher\n            \n            //node.warn(\"Strom_Aus_Speicher= \" +  Strom_Aus_Speicher)\n            \n            Konto_Autopilot -= (Netto_Bedarf - Strom_Aus_Speicher) * Strom_Preis\n            \n        } else {\n            \n            Konto_Autopilot -= (Netto_Bedarf) * Strom_Preis\n            \n        }\n        \n        \n    } else {\n        Konto_Autopilot -= (Netto_Bedarf) * Strom_Preis\n    }\n    \n    // Nutzer\n    if (Speicher_Fuellstand > 0) {\n        \n        /*\n        if (Strom_Preis_Speicher < Strom_Preis || Speicher_Benutzen) {\n            \n            var Strom_Aus_Speicher = Math.min(Math.min(Speicher_Fuellstand, C), Netto_Bedarf)\n            Speicher_Fuellstand -= Strom_Aus_Speicher\n            \n            //node.warn(\"Strom_Aus_Speicher= \" +  Strom_Aus_Speicher)\n            \n            Konto -= (Netto_Bedarf - Strom_Aus_Speicher) * Strom_Preis\n            \n        } else {\n            \n            Konto -= (Netto_Bedarf) * Strom_Preis\n            \n        }\n        */\n        \n        if (Speicher_Benutzen > 0) {\n            \n            var Strom_Aus_Speicher = Math.min(Math.min(Speicher_Fuellstand, C), Netto_Bedarf) * Speicher_Benutzen\n            Speicher_Fuellstand -= Strom_Aus_Speicher\n            \n            //node.warn(\"Strom_Aus_Speicher= \" +  Strom_Aus_Speicher)\n            \n            Konto -= (Netto_Bedarf - Strom_Aus_Speicher) * Strom_Preis\n            \n        } else {\n            \n            Konto -= (Netto_Bedarf) * Strom_Preis\n            \n        }\n        \n    } else {\n        Konto -= (Netto_Bedarf) * Strom_Preis\n    }\n    \n} else {\n    \n    // Autopilot\n    if (Speicher_Fuellstand_Autopilot < Speicher_Max) {\n        \n        /*\n        if (Strom_Preis_Speicher < Strom_Preis) {\n            \n            Konto_Autopilot += (Netto_Bedarf) * Strom_Preis\n            \n            \n        } else {\n            \n            var Strom_In_Speicher = Math.min(Math.min(Speicher_Max - Speicher_Fuellstand_Autopilot, C), Math.abs(Netto_Bedarf))\n            Speicher_Fuellstand_Autopilot += Strom_In_Speicher\n            \n            Konto_Autopilot += (Math.abs(Netto_Bedarf) - Strom_In_Speicher) * Strom_Preis\n            \n        }\n        */\n        \n        /*\n        var Strom_In_Speicher = Math.min(Math.min(Speicher_Max - Speicher_Fuellstand_Autopilot, C), Math.abs(Netto_Bedarf))\n        Speicher_Fuellstand_Autopilot += Strom_In_Speicher\n            \n        Konto_Autopilot += (Math.abs(Netto_Bedarf) - Strom_In_Speicher) * Strom_Preis\n        */\n        \n        /*\n        if (Strom_Preis > 60/1000 && !Speicher_Benutzen) {\n            \n            Konto_Autopilot += Math.abs(Netto_Bedarf) * Strom_Preis\n            \n            \n        } else {\n            \n            var Strom_In_Speicher = Math.min(Math.min(Speicher_Max - Speicher_Fuellstand_Autopilot, C), Math.abs(Netto_Bedarf))\n            Speicher_Fuellstand_Autopilot += Strom_In_Speicher\n            \n            Konto_Autopilot += (Math.abs(Netto_Bedarf) - Strom_In_Speicher) * Strom_Preis\n            \n        }\n        */\n        \n        if (Strom_Preis_Speicher_Abl < 0) {\n            \n            Konto_Autopilot += (Netto_Bedarf) * Strom_Preis\n            \n            \n        } else {\n            \n            var Strom_In_Speicher = Math.min(Math.min(Speicher_Max - Speicher_Fuellstand_Autopilot, C), Math.abs(Netto_Bedarf))\n            Speicher_Fuellstand_Autopilot += Strom_In_Speicher\n            \n            Konto_Autopilot += (Math.abs(Netto_Bedarf) - Strom_In_Speicher) * Strom_Preis\n            \n        }\n        \n        \n    } else {\n        Konto_Autopilot += Math.abs(Netto_Bedarf) * Strom_Preis\n    }\n    \n    // Nutzer\n    if (Speicher_Fuellstand < Speicher_Max) {\n        \n        /*\n        if (Strom_Preis_Speicher < Strom_Preis && !Speicher_Benutzen) {\n            \n            Konto += (Netto_Bedarf) * Strom_Preis\n            \n            \n        } else {\n            \n            var Strom_In_Speicher = Math.min(Math.min(Speicher_Max - Speicher_Fuellstand, C), Math.abs(Netto_Bedarf))\n            Speicher_Fuellstand += Strom_In_Speicher\n            \n            Konto += (Math.abs(Netto_Bedarf) - Strom_In_Speicher) * Strom_Preis\n            \n        }\n        */\n        \n        if (Speicher_Benutzen === 0) {\n            \n            Konto += (Netto_Bedarf) * Strom_Preis\n            \n            \n        } else {\n            \n            var Strom_In_Speicher = Math.min(Math.min(Speicher_Max - Speicher_Fuellstand, C), Math.abs(Netto_Bedarf)) * Speicher_Benutzen\n            Speicher_Fuellstand += Strom_In_Speicher\n            \n            Konto += (Math.abs(Netto_Bedarf) - Strom_In_Speicher) * Strom_Preis\n            \n        }\n        \n    } else {\n        Konto += Math.abs(Netto_Bedarf) * Strom_Preis\n    }\n}\n\nflow.set(\"Konto_Autopilot\", Konto_Autopilot)\nflow.set(\"Speicher_Fuellstand_Autopilot\", Speicher_Fuellstand_Autopilot)\n\nflow.set(\"Konto\", Konto)\nflow.set(\"Speicher_Fuellstand\", Speicher_Fuellstand)\n\nflow.set(\"Konto_Benchmark\", Konto_Benchmark)\n\nmsg.Strom_Bedarf =  parseFloat(msg.payload[\"Strom Bedarf\"])\nmsg.Strom_Erzeugung = parseFloat(msg.payload[\"Strom Erzeugung\"])\nmsg.Strom_Bedarf_Netto = Netto_Bedarf\nmsg.Konto_Benchmark = Konto_Benchmark\n\nflow.set(\"Strom_Bedarf\", msg.Strom_Bedarf)\nflow.set(\"Strom_Erzeugung\", msg.Strom_Erzeugung)\n\n\nmsg.payload = [{\n\"series\": [\"A\"],\n\"data\": [\n    Netto_Bedarf_History\n],\n\"labels\": [\"\"]\n}]\n\n//msg.payload = Math.round(msg.Strom_Bedarf_Netto*10)/10 \n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 920,
+        "y": 120,
+        "wires": [
+            [
+                "b1b71767.5ca8d8",
+                "b36be9c1.6f7028"
+            ]
+        ]
+    },
+    {
+        "id": "56f2ceae.11619",
+        "type": "function",
+        "z": "e5886f9f.a5ae8",
+        "name": "Strom_Preis",
+        "func": "\nvar Strom_Preis = parseFloat(msg.payload[\"Deutschland/Österreich/Luxemburg[Euro/MWh]\"]) / 1000\nvar Strom_Preis_Liste = flow.get(\"Strom_Preis_Liste\")\nvar Strom_Preis_History = flow.get(\"Strom_Preis_History\")\nvar Strom_Preis_Speicher_History = flow.get(\"Strom_Preis_Speicher_History\")\n\nvar Forecast_Stunden = flow.get(\"Forecast_Stunden\")\n\nvar Datum_Components = msg.payload[\"Datum\"].split(\".\")\nvar Datum_Reshape = Datum_Components[1] + \".\" + Datum_Components[0] + \".\" + Datum_Components[2]\nvar Strom_Preis_Zeit = Date.parse(Datum_Reshape + \" \" + msg.payload[\"Uhrzeit\"])\n\nStrom_Preis_Liste.push(Strom_Preis)\nif (Strom_Preis_Liste.length > 24) Strom_Preis_Liste.shift()\n\n//var Strom_Preis_Speicher = Math.max(...Strom_Preis_Liste.slice(0, Forecast_Stunden))\nvar Strom_Preis_Speicher = Strom_Preis_Liste.slice(0, Forecast_Stunden)\n//node.warn(\"Strom_Preis_Speicher= \" + Strom_Preis_Speicher)\n\nStrom_Preis_Speicher = Strom_Preis_Speicher.reduce((a, b) => a + b, 0) / Strom_Preis_Speicher.length\n//node.warn(\"Strom_Preis_Speicher= \" + Strom_Preis_Speicher)\n\nStrom_Preis_Speicher_History.push({\"x\": Strom_Preis_Zeit, \"y\": Strom_Preis_Speicher})\nif (Strom_Preis_Speicher_History.length > 24 * 2) Strom_Preis_Speicher_History.shift()\n\n\nflow.set(\"Strom_Preis\", Strom_Preis)\nflow.set(\"Strom_Preis_Liste\", Strom_Preis_Liste)\nflow.set(\"Strom_Preis_Speicher\", Strom_Preis_Speicher)\n\n\n\n\n\nStrom_Preis_History.push({\"x\": Strom_Preis_Zeit, \"y\": Strom_Preis})\nif (Strom_Preis_History.length > 24 * 2) Strom_Preis_History.shift()\n\n\nflow.set(\"Strom_Preis_History\", Strom_Preis_History)\nflow.set(\"Strom_Preis_Speicher_History\", Strom_Preis_Speicher_History)\n\nmsg.payload = [{\n\"series\": [\"A\", \"B\"],\n\"data\": [\n    Strom_Preis_History,\n    Strom_Preis_Speicher_History\n],\n\"labels\": [\"Strom_Preis_History\", \"Strom_Preis_Speicher_History\"]\n}]\n\n\n//msg.payload = Math.round(Strom_Preis*10000)/10000\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 850,
+        "y": 200,
+        "wires": [
+            [
+                "420acee9.6e967"
+            ]
+        ]
+    },
+    {
+        "id": "b1b71767.5ca8d8",
+        "type": "ui_chart",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "group": "c0aba179.67b6",
+        "order": 1,
+        "width": "13",
+        "height": "5",
+        "label": "Netto Bedarf Strom",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "5",
+        "removeOlderPoints": "50",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 1210,
+        "y": 120,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7db3b955.1efae8",
+        "type": "ui_button",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "group": "c0aba179.67b6",
+        "order": 13,
+        "width": "13",
+        "height": "1",
+        "passthru": false,
+        "label": "Reset",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 90,
+        "y": 40,
+        "wires": [
+            [
+                "5dc997b3.cc7bf8"
+            ]
+        ]
+    },
+    {
+        "id": "5dc997b3.cc7bf8",
+        "type": "function",
+        "z": "e5886f9f.a5ae8",
+        "name": "Init",
+        "func": "flow.set(\"Strom_Preis_Liste\", [])\nflow.set(\"Strom_Preis_History\", [])\nflow.set(\"Netto_Bedarf_History\", [])\nflow.set(\"Strom_Preis_Speicher_History\", [])\n\nflow.set(\"Speicher_Max\", 100000)\nflow.set(\"Speicher_Fuellstand_Autopilot\", 50000)\nflow.set(\"Speicher_Fuellstand\", 50000)\nflow.set(\"Konto\", 10000000)\nflow.set(\"Konto_Autopilot\", 10000000)\nflow.set(\"Konto_Benchmark\", 10000000)\nflow.set(\"Ts\", 24)\nflow.set(\"K\", 0)\nflow.set(\"C\", 2000) \nflow.set(\"Speicher_Benutzen\", 1)\n//flow.set(\"Forecast_Stunden\", 24) \n\n//msg.payload = flow.get(\"Speicher_Benutzen\")\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 230,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "27c06269.c2605e",
+        "type": "ui_chart",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "group": "c0aba179.67b6",
+        "order": 4,
+        "width": "7",
+        "height": "6",
+        "label": "Strom / kWh",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#ff6d00",
+            "#00e900",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 490,
+        "y": 280,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f671495d.afb848",
+        "type": "inject",
+        "z": "e5886f9f.a5ae8",
+        "name": "Updater",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "0.1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 340,
+        "wires": [
+            [
+                "7e54b2a2.ea6dbc",
+                "5615096c.84f958"
+            ]
+        ]
+    },
+    {
+        "id": "7e54b2a2.ea6dbc",
+        "type": "function",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "func": "var Strom_Bedarf = flow.get(\"Strom_Bedarf\")\nvar Strom_Erzeugung = flow.get(\"Strom_Erzeugung\")\n\nmsg.Konto = flow.get(\"Konto\")\nmsg.Konto_Autopilot = flow.get(\"Konto_Autopilot\")\n\nmsg.payload = [{\n    \"series\": [\"Strom\"],\n    \"data\": [ [Strom_Bedarf, Strom_Erzeugung]],\n    \"labels\": [ \"Bedarf\", \"Erzeugung\" ]\n}]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 340,
+        "wires": [
+            [
+                "27c06269.c2605e",
+                "b9c6077c.f36418",
+                "b12e0a09.295238"
+            ]
+        ]
+    },
+    {
+        "id": "62085c4d.0d2ed4",
+        "type": "function",
+        "z": "e5886f9f.a5ae8",
+        "name": "Init",
+        "func": "flow.set(\"Strom_Preis_Liste\", [])\nflow.set(\"Strom_Preis_History\", [])\nflow.set(\"Netto_Bedarf_History\", [])\nflow.set(\"Strom_Preis_Speicher_History\", [])\n\nflow.set(\"Speicher_Max\", 100000)\nflow.set(\"Speicher_Fuellstand_Autopilot\", 50000)\nflow.set(\"Speicher_Fuellstand\", 50000)\nflow.set(\"Konto\", 10000000)\nflow.set(\"Konto_Autopilot\", 10000000)\nflow.set(\"Konto_Benchmark\", 10000000)\nflow.set(\"Ts\", 24)\nflow.set(\"K\", 0)\nflow.set(\"C\", 2000) \n\nflow.set(\"Forecast_Stunden\", 6) \nflow.set(\"Speicher_Benutzen\", 1) \n\n//msg.payload = flow.get(\"Speicher_Benutzen\")\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 230,
+        "y": 160,
+        "wires": [
+            [
+                "4937b43c.08a9ac",
+                "a6bb6fb2.885af"
+            ]
+        ]
+    },
+    {
+        "id": "5615096c.84f958",
+        "type": "function",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "func": "var Strom_Preis = flow.get(\"Strom_Preis\")\nvar Strom_Preis_Speicher = flow.get(\"Strom_Preis_Speicher\")\n\n\nmsg.payload = [{\n    \"series\": [\"Preise\"],\n    \"data\": [ [Strom_Preis, Strom_Preis_Speicher]],\n    \"labels\": [ \"Strom Extern\", \"Strom Speicher\" ]\n}]\n\nmsg.Speicher_Fuellstand = Math.round(flow.get(\"Speicher_Fuellstand\"))\nmsg.Speicher_Fuellstand_Autopilot = Math.round(flow.get(\"Speicher_Fuellstand_Autopilot\"))\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 460,
+        "wires": [
+            [
+                "e138e2e8.41cec",
+                "6c9e0ce7.a20c64",
+                "bc5b680b.ede598"
+            ]
+        ]
+    },
+    {
+        "id": "b9c6077c.f36418",
+        "type": "ui_text",
+        "z": "e5886f9f.a5ae8",
+        "group": "c0aba179.67b6",
+        "order": 7,
+        "width": "6",
+        "height": "1",
+        "name": "Konto Autopilot",
+        "label": "Konto / EUR (Autopilot)",
+        "format": "{{msg.Konto_Autopilot | number:0}}",
+        "layout": "col-center",
+        "x": 500,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e138e2e8.41cec",
+        "type": "ui_chart",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "group": "c0aba179.67b6",
+        "order": 5,
+        "width": "7",
+        "height": "6",
+        "label": "Bewertung / EUR",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#00eaaa",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 510,
+        "y": 420,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6c9e0ce7.a20c64",
+        "type": "ui_gauge",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "group": "c0aba179.67b6",
+        "order": 3,
+        "width": "6",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Speicher Autopilot",
+        "label": "kW/h",
+        "format": "{{msg.Speicher_Fuellstand_Autopilot}}",
+        "min": 0,
+        "max": "100000",
+        "colors": [
+            "#c30000",
+            "#00b4eb",
+            "#00be00"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 510,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "420acee9.6e967",
+        "type": "ui_chart",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "group": "c0aba179.67b6",
+        "order": 2,
+        "width": "13",
+        "height": "5",
+        "label": "Strom Preis",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "30",
+        "removeOlderPoints": "50",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "x": 1190,
+        "y": 200,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b12e0a09.295238",
+        "type": "ui_text",
+        "z": "e5886f9f.a5ae8",
+        "group": "c0aba179.67b6",
+        "order": 8,
+        "width": "6",
+        "height": "1",
+        "name": "Konto",
+        "label": "Konto / EUR (Spieler)",
+        "format": "{{msg.Konto | number:0}}",
+        "layout": "col-center",
+        "x": 470,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "bc5b680b.ede598",
+        "type": "ui_gauge",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "group": "c0aba179.67b6",
+        "order": 6,
+        "width": "6",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Speicher Nutzer",
+        "label": "kW/h",
+        "format": "{{msg.Speicher_Fuellstand}}",
+        "min": 0,
+        "max": "100000",
+        "colors": [
+            "#c30000",
+            "#00b4eb",
+            "#00be00"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 500,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "b36be9c1.6f7028",
+        "type": "ui_text",
+        "z": "e5886f9f.a5ae8",
+        "group": "c0aba179.67b6",
+        "order": 9,
+        "width": "6",
+        "height": "1",
+        "name": "Konto Benchmark",
+        "label": "Konto / EUR (Benchmark)",
+        "format": "{{msg.Konto_Benchmark | number:0}}",
+        "layout": "col-center",
+        "x": 1210,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "640dd74c.059528",
+        "type": "ui_slider",
+        "z": "e5886f9f.a5ae8",
+        "name": "",
+        "label": "Speicher Prio %",
+        "group": "c0aba179.67b6",
+        "order": 10,
+        "width": "5",
+        "height": "1",
+        "passthru": true,
+        "topic": "",
+        "min": 0,
+        "max": "1",
+        "step": "0.01",
+        "x": 120,
+        "y": 560,
+        "wires": [
+            [
+                "85e1aa40.0babd8"
+            ]
+        ]
+    },
+    {
+        "id": "85e1aa40.0babd8",
+        "type": "function",
+        "z": "e5886f9f.a5ae8",
+        "name": "Set Strategy",
+        "func": "flow.set(\"Speicher_Benutzen\", msg.payload)",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0aba179.67b6",
+        "type": "ui_group",
+        "z": "",
+        "name": "BWB",
+        "tab": "e0f23133.8e73",
+        "disp": false,
+        "width": "26",
+        "collapse": false
+    },
+    {
+        "id": "e0f23133.8e73",
+        "type": "ui_tab",
+        "z": "",
+        "name": "SimSpeicher",
+        "icon": "dashboard",
+        "order": 1
+    }
+]
